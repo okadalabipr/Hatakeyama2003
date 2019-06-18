@@ -18,7 +18,7 @@ runSim
 - Python
 ```python
 %matplotlib inline
-%run -i runSim.py
+%run -i run_sim.py
 ```
 
 ## Installation
