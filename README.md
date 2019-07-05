@@ -7,7 +7,6 @@ Hatakeyama, M. *et al.* A computational model on the modulation of mitogen-activ
     - numpy
     - scipy
     - matplotlib
-    - jupyter
 
 ## Run Simulation and View Results
 - MATLAB
@@ -17,8 +16,8 @@ runSim
 
 - Python
 ```python
-%matplotlib inline
-%run -i run_sim.py
+from run_sim import run_simulation
+run_simulation()
 ```
 
 ## Installation
