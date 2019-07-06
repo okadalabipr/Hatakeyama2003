@@ -16,13 +16,13 @@ class Simulation(object):
     t = np.array(tspan)
     condition = 3
 
-    sim_RP        = np.empty((len(tspan),condition))
-    sim_ShP       = np.empty((len(tspan),condition))
-    sim_PI3K_act  = np.empty((len(tspan),condition))
-    sim_Raf_act   = np.empty((len(tspan),condition))
-    sim_MEKPP     = np.empty((len(tspan),condition))
-    sim_ERKPP     = np.empty((len(tspan),condition))
-    sim_Akt_PI_PP = np.empty((len(tspan),condition))
+    RP        = np.empty((len(tspan),condition))
+    ShP       = np.empty((len(tspan),condition))
+    PI3K_act  = np.empty((len(tspan),condition))
+    Raf_act   = np.empty((len(tspan),condition))
+    MEKPP     = np.empty((len(tspan),condition))
+    ERKPP     = np.empty((len(tspan),condition))
+    Akt_PI_PP = np.empty((len(tspan),condition))
 
     for i in range(condition):
         if i==0:
@@ -34,10 +34,10 @@ class Simulation(object):
 
         Y = odeint(diffeq,y0,tspan,args=tuple(x))
 
-        sim_RP[:,i] = 2*(Y[:,V.RP]+Y[:,V.R_PI3K]+Y[:,V.R_PI3K_act]+Y[:,V.R_ShGS]+Y[:,V.R_ShP]+Y[:,V.R_Shc])/y0[V.R]*100.
-        sim_ShP[:,i] = Y[:,V.ShP]/y0[V.Shc]*100.
-        sim_PI3K_act[:,i] = Y[:,V.PI3K_act]/y0[V.PI3K]*100.
-        sim_Raf_act[:,i] = Y[:,V.Raf_act]/y0[V.Raf]*100.
-        sim_MEKPP[:,i] = Y[:,V.MEKPP]/y0[V.MEK]*100.
-        sim_ERKPP[:,i] = Y[:,V.ERKPP]/y0[V.ERK]*100.
-        sim_Akt_PI_PP[:,i] = Y[:,V.Akt_PI_PP]/y0[V.Akt]*100.
+        RP[:,i] = 2*(Y[:,V.RP]+Y[:,V.R_PI3K]+Y[:,V.R_PI3K_act]+Y[:,V.R_ShGS]+Y[:,V.R_ShP]+Y[:,V.R_Shc])/y0[V.R]*100.
+        ShP[:,i] = Y[:,V.ShP]/y0[V.Shc]*100.
+        PI3K_act[:,i] = Y[:,V.PI3K_act]/y0[V.PI3K]*100.
+        Raf_act[:,i] = Y[:,V.Raf_act]/y0[V.Raf]*100.
+        MEKPP[:,i] = Y[:,V.MEKPP]/y0[V.MEK]*100.
+        ERKPP[:,i] = Y[:,V.ERKPP]/y0[V.ERK]*100.
+        Akt_PI_PP[:,i] = Y[:,V.Akt_PI_PP]/y0[V.Akt]*100.
