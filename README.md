@@ -21,6 +21,7 @@ runSim
 from run_sim import run_simulation
 run_simulation()
 ```
+![e4model](python/e4model.png)
 
 ## Installation
     $ git clone https://github.com/okadalabipr/Hatakeyama2003.git
