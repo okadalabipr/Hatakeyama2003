@@ -78,3 +78,5 @@ def timecourse(sim):
     plt.xlabel('TIME (s)')
     plt.ylim(0,50)
     plt.ylabel('AktPP (%)')
+    
+    plt.show()
