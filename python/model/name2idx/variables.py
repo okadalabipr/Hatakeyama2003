@@ -1,4 +1,4 @@
-F_V = [\
+var_names = [\
     'Akt',
     'Akt_PIP3',
     'Akt_PI_P',
@@ -39,5 +39,5 @@ F_V = [\
     'len_f_vars'\
 ]
 
-for i,name in enumerate(F_V):
-  exec('%s=%d'%(name,i))
+for idx,name in enumerate(var_names):
+  exec('%s=%d'%(name,idx))
