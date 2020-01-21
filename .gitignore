@@ -12,5 +12,5 @@ __pycache__/
 
 # Jupyter files
 *.ipynb
-.ipynb_checkpointsi
+.ipynb_checkpoints
 
