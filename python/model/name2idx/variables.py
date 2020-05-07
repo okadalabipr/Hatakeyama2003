@@ -1,4 +1,4 @@
-var_names = [\
+var_names = [
     'Akt',
     'Akt_PIP3',
     'Akt_PI_P',
@@ -35,9 +35,13 @@ var_names = [\
     'E',
     'MKP3',
     'PP2A',
-    #
-    'len_f_vars'\
 ]
 
-for idx,name in enumerate(var_names):
-  exec('%s=%d'%(name,idx))
+for idx, name in enumerate(var_names):
+    exec(
+        '{} = {:d}'.format(
+            name, idx
+        )
+    )
+
+len_f_vars = len(var_names)

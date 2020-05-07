@@ -1,9 +1,8 @@
-from .name2idx import parameters as C
-from .name2idx import variables as V
+from .name2idx import C, V
 
-def diffeq(y,t,*x):
+def diffeq(y, t, *x):
 
-    v = [0]*35 #Rate equations
+    v = [0] * 35 #Rate equations
 
     v[1] = x[C.kf1]*y[V.R]*y[V.HRG] - x[C.kr1]*y[V.R_HRG]
     v[2] = x[C.kf2]*y[V.R_HRG]**2 - x[C.kr2]*y[V.R_HRG2]
@@ -40,7 +39,7 @@ def diffeq(y,t,*x):
     v[33] = x[C.kf33]*y[V.PP2A]*y[V.Akt_PI_PP]/(x[C.K33]*(1+y[V.MEKP]/x[C.K16]+y[V.MEKPP]/x[C.K18]+y[V.Akt_PI_P]/x[C.K31])+y[V.Akt_PI_PP])
     v[34] = x[C.kf34]*y[V.RP] - x[C.kr34]*y[V.internalization]
 
-    dydt = [0]*V.len_f_vars
+    dydt = [0] * V.len_f_vars
 
     dydt[V.Akt] = -v[29]
     dydt[V.Akt_PIP3] = v[29] -v[30] + v[31]
@@ -81,7 +80,7 @@ def diffeq(y,t,*x):
 
 def f_params():
     
-    x = [0]*C.len_f_params
+    x = [0] * C.len_f_params
 
     x[C.kf1] = 1.2e-3
     x[C.kr1] = 7.6e-4
@@ -157,7 +156,7 @@ def f_params():
 
 def initial_values():
     
-    y0 = [0]*V.len_f_vars
+    y0 = [0] * V.len_f_vars
 
     y0[V.R] = 80.
     y0[V.Shc] = 1000.
