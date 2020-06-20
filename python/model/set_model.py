@@ -39,7 +39,7 @@ def diffeq(y, t, *x):
     v[33] = x[C.kf33]*y[V.PP2A]*y[V.Akt_PI_PP]/(x[C.K33]*(1+y[V.MEKP]/x[C.K16]+y[V.MEKPP]/x[C.K18]+y[V.Akt_PI_P]/x[C.K31])+y[V.Akt_PI_PP])
     v[34] = x[C.kf34]*y[V.RP] - x[C.kr34]*y[V.internalization]
 
-    dydt = [0] * V.len_f_vars
+    dydt = [0] * V.NUM
 
     dydt[V.Akt] = -v[29]
     dydt[V.Akt_PIP3] = v[29] -v[30] + v[31]
@@ -78,9 +78,9 @@ def diffeq(y, t, *x):
     return dydt
 
 
-def f_params():
+def param_values():
     
-    x = [0] * C.len_f_params
+    x = [0] * C.NUM
 
     x[C.kf1] = 1.2e-3
     x[C.kr1] = 7.6e-4
@@ -156,7 +156,7 @@ def f_params():
 
 def initial_values():
     
-    y0 = [0] * V.len_f_vars
+    y0 = [0] * V.NUM
 
     y0[V.R] = 80.
     y0[V.Shc] = 1000.
