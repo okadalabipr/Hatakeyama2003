@@ -1,11 +1,12 @@
 import numpy as np
 from scipy.integrate import odeint
 
-from model.set_model import *
+from .name2idx import C, V
+from .set_model import diffeq, param_values, initial_values
 
 class Simulation(object):
 
-    x = f_params()
+    x = param_values()
     y0 = initial_values()
 
     tspan = range(1801)
@@ -30,8 +31,10 @@ class Simulation(object):
 
         Y = odeint(diffeq, y0, tspan, args=tuple(x))
 
-        RP[:,i] = 2 * (Y[:,V.RP] + Y[:,V.R_PI3K] + Y[:,V.R_PI3K_act] + 
-                        Y[:,V.R_ShGS] + Y[:,V.R_ShP] + Y[:,V.R_Shc]) / y0[V.R] * 100.
+        RP[:,i] = 2 * (
+                        Y[:,V.RP] + Y[:,V.R_PI3K] + Y[:,V.R_PI3K_act] + 
+                        Y[:,V.R_ShGS] + Y[:,V.R_ShP] + Y[:,V.R_Shc]
+                        ) / y0[V.R] * 100.
         ShP[:,i] = Y[:,V.ShP] / y0[V.Shc] * 100.
         PI3K_act[:,i] = Y[:,V.PI3K_act] / y0[V.PI3K] * 100.
         Raf_act[:,i] = Y[:,V.Raf_act] / y0[V.Raf] * 100.
