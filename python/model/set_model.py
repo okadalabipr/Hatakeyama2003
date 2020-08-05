@@ -1,9 +1,8 @@
 from .name2idx import C, V
 
 def diffeq(y, t, *x):
-
-    v = [0] * 35 #Rate equations
-
+    # Rate equations
+    v = {}
     v[1] = x[C.kf1]*y[V.R]*y[V.HRG] - x[C.kr1]*y[V.R_HRG]
     v[2] = x[C.kf2]*y[V.R_HRG]**2 - x[C.kr2]*y[V.R_HRG2]
     v[3] = x[C.kf3]*y[V.R_HRG2] - x[C.kr3]*y[V.RP]
